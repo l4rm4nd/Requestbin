@@ -26,4 +26,4 @@ $ sudo docker-compose build
 $ sudo docker-compose up -d
 ```
 
-Your own private RequestBin will be running on port 0.0.0.0:8000.
+Your own private RequestBin will be running on port 8000.
