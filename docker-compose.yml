@@ -1,13 +1,13 @@
 version: "2"
 
-networks:
-  isolated-npm-bridge:
-    external: true
+#networks:
+#  isolated-npm-bridge:
+#    external: true
 
 services:
   app:
-    networks:
-      - isolated-npm-bridge
+    #networks:
+    #  - isolated-npm-bridge
     restart: unless-stopped
     labels:
       com.centurylinklabs.watchtower.enable: "false"
@@ -22,9 +22,9 @@ services:
 
   redis:
     image: redis
-    networks:
-      - isolated-npm-bridge
+    #networks:
+    #  - isolated-npm-bridge
     labels:
-      com.centurylinklabs.watchtower.enable: "false"
+      com.centurylinklabs.watchtower.enable: "true"
     hostname: redis
     container_name: requestbin_redis
