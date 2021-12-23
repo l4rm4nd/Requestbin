@@ -16,7 +16,10 @@ docker and docker-compose installed, then grab the RequestBin source using git:
 
 `$ git clone https://github.com/l4rm4nd/Requestbin`
 
-Go into the project directory and then build and start the containers
+- You may modify the ``docker-compose.yml`` to specify your docker networks
+- You may modify the ``requestbin/config.py`` to specify a new SESSION_SECRET_KEY
+
+Go into the project directory and build + start the containers!
 
 ```
 $ sudo docker-compose build
