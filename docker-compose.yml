@@ -28,3 +28,4 @@ services:
       com.centurylinklabs.watchtower.enable: "true"
     hostname: redis
     container_name: requestbin_redis
+    restart: unless-stopped
