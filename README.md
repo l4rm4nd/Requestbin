@@ -9,12 +9,18 @@ MIT
 Looking to self-host?
 =====================
 
-## Deploy your own instance using Docker
+## Use dockerhub images
+
+```
+docker compose up -d
+```
+
+## Build your own image
 
 On the server/machine you want to host this, you'll first need a machine with
 docker and docker-compose installed, then grab the RequestBin source using git:
 
-`$ git clone https://github.com/l4rm4nd/Requestbin`
+`git clone https://github.com/l4rm4nd/Requestbin`
 
 - You may modify the ``docker-compose.yml`` to specify your docker networks
 - You may modify the ``requestbin/config.py`` to specify a new SESSION_SECRET_KEY
@@ -22,8 +28,8 @@ docker and docker-compose installed, then grab the RequestBin source using git:
 Go into the project directory and build + start the containers!
 
 ```
-$ sudo docker-compose build
-$ sudo docker-compose up -d
+docker compose build .
+docker compose up -d
 ```
 
 Your own private RequestBin will be running on port 8000.
