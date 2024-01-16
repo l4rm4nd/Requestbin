@@ -2,19 +2,20 @@ version: "2"
 
 services:
   app:
-    #networks:
-    #  - dev
+    image: l4rm4nd/requestbin:latest
+    hostname: requestbin
+    container_name: requestbin
+    build: .
     restart: unless-stopped
     expose:
       - 8000
-    build: .
-    hostname: requestbin
-    container_name: requestbin
     environment:
         REALM: prod
         REDIS_URL: "//redis:6379"
     links:
       - redis
+    #networks:
+    #  - dev
     #labels:
     #  - traefik.enable=true
     #  - traefik.docker.network=dev
@@ -24,12 +25,12 @@ services:
     #  - traefik.http.routers.requestbin.middlewares=local-ipwhitelist@file,authelia@docker
     
   redis:
-    image: redis
-    #networks:
-    #  - dev
+    image: redis:7.2-alpine
     hostname: redis
     container_name: requestbin_redis
     restart: unless-stopped
+    #networks:
+    #  - dev
 
 #networks:
 #  dev:
