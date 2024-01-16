@@ -1,16 +1,12 @@
 version: "2"
 
-#networks:
-#  isolated-npm-bridge:
-#    external: true
-
 services:
   app:
     #networks:
-    #  - isolated-npm-bridge
+    #  - dev
     restart: unless-stopped
-    labels:
-      com.centurylinklabs.watchtower.enable: "false"
+    expose:
+      - 8000
     build: .
     hostname: requestbin
     container_name: requestbin
@@ -18,14 +14,23 @@ services:
         REALM: prod
         REDIS_URL: "//redis:6379"
     links:
-        - redis
-
+      - redis
+    #labels:
+    #  - traefik.enable=true
+    #  - traefik.docker.network=dev
+    #  - traefik.http.routers.requestbin.rule=Host(`bin.example.com`)
+    #  - traefik.http.services.requestbin.loadbalancer.server.port=8000
+    #  # Optional part for traefik middlewares
+    #  - traefik.http.routers.requestbin.middlewares=local-ipwhitelist@file,authelia@docker
+    
   redis:
     image: redis
     #networks:
-    #  - isolated-npm-bridge
-    labels:
-      com.centurylinklabs.watchtower.enable: "true"
+    #  - dev
     hostname: redis
     container_name: requestbin_redis
     restart: unless-stopped
+
+#networks:
+#  dev:
+#    external: true
