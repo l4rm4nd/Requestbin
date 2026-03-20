@@ -14,6 +14,16 @@ services:
     environment:
         REALM: prod
         REDIS_URL: "//redis:6379"
+    mem_limit: 512m
+    mem_reservation: 256m
+    cpus: 0.50
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL        
     links:
       - redis
     #networks:
