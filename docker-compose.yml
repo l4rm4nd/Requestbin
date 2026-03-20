@@ -1,6 +1,5 @@
-version: "2"
-
 services:
+
   app:
     image: l4rm4nd/requestbin:latest
     hostname: requestbin
@@ -37,7 +36,7 @@ services:
     #  - traefik.http.routers.requestbin.middlewares=local-ipwhitelist@file,authelia@docker
     
   redis:
-    image: redis:7.2-alpine
+    image: redis:8-alpine
     hostname: redis
     container_name: requestbin_redis
     restart: unless-stopped
